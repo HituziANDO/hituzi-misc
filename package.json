@@ -1,7 +1,7 @@
 {
   "name": "hituzi-misc",
   "version": "0.0.3",
-  "description": "JavaScript misc library.",
+  "description": "JavaScript & TypeScript misc library.",
   "main": "dist-cjs/index.js",
   "module": "dist-esm/index.js",
   "types": "dist-cjs/index.d.ts",
