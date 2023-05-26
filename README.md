@@ -15,3 +15,7 @@ npm install hituzi-misc
 ```
 yarn add hituzi-misc  
 ```
+
+## Documents
+
+https://hituziando.github.io/hituzi-misc/
