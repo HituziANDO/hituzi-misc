@@ -13,7 +13,7 @@ npm install hituzi-misc
 ### Use yarn
 
 ```
-yarn add hituzi-misc  
+yarn add hituzi-misc
 ```
 
 ## Documents
