@@ -25,7 +25,7 @@
  *  // => "こんにちは"
  *
  *  // specified the language code.
- *  console.log(l10n("bye", null, "en"));
+ *  console.log(l10n("bye", undefined, "en"));
  *  // => "Goodbye"
  *
  *  // with the format specifier.
