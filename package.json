@@ -1,6 +1,6 @@
 {
   "name": "hituzi-misc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JavaScript & TypeScript misc library.",
   "main": "dist-cjs/index.js",
   "module": "dist-esm/index.js",
@@ -11,9 +11,15 @@
     "build:esm": "tsc --project . --module es2015 --outDir ./dist-esm",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:fix": "eslint --fix ./src/**/*.ts",
+    "doc": "typedoc --entryPointStrategy expand ./src && open ./docs/index.html",
     "prepublishOnly": "npm run build"
   },
   "author": "Hituzi Ando",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:HituziANDO/hituzi-misc.git"
+  },
+  "homepage": "https://github.com/HituziANDO/hituzi-misc",
   "license": "MIT",
   "dependencies": {
     "typescript": "^5.0.4"
@@ -29,7 +35,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "typedoc": "^0.24.7"
   },
   "lint-staged": {
     "./src/**/*.ts": [
