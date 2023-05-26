@@ -35,56 +35,56 @@
  *
  */
 export class L10n {
-    private static dict: { [lang: string]: any } = {};
-    private static lang = 'default';
+  private static dict: { [lang: string]: any } = {};
+  private static lang = 'default';
 
-    /**
-     * The prefix string of the format specifier.
-     * The default of this property is "$". The format specifier becomes $0, $1, ... $n.
-     */
-    static formatSpecifierPrefix = '$';
+  /**
+   * The prefix string of the format specifier.
+   * The default of this property is "$". The format specifier becomes $0, $1, ... $n.
+   */
+  static formatSpecifierPrefix = '$';
 
-    /**
-     * Registers a dictionary of strings used by the app for localization.
-     * @param dict
-     * @param lang Used language.
-     */
-    static register(dict: { [lang: string]: any }, lang?: string) {
-        this.dict = dict;
-        this.lang = lang || this.lang;
-    }
+  /**
+   * Registers a dictionary of strings used by the app for localization.
+   * @param dict A dictionary of strings.
+   * @param lang The language code such as "ja".
+   */
+  static register(dict: { [lang: string]: any }, lang?: string) {
+    this.dict = dict;
+    this.lang = lang || this.lang;
+  }
 
-    /**
-     * Retrieves a string of specified key from the dictionary.
-     * @param key
-     * @param lang
-     */
-    static get(key: string, lang?: string): string {
-        const dict = this.dict[lang || this.lang] || this.dict['default'] || {};
-        return dict[key] || key;
-    }
+  /**
+   * Retrieves a string of specified key from the dictionary.
+   * @param key The key in the dictionary.
+   * @param lang The language code such as "ja".
+   */
+  static get(key: string, lang?: string): string {
+    const dict = this.dict[lang || this.lang] || this.dict['default'] || {};
+    return dict[key] || key;
+  }
 
-    /**
-     * Retrieves a string of specified key from the dictionary.
-     * The part of the string is replaced by specified strings if the `values` argument is specified.
-     * @param key
-     * @param values String values to replace.
-     * @param lang
-     */
-    static format(key: string, values?: string[], lang?: string): string {
-        let str = this.get(key, lang);
-        values?.forEach((val, i) => (str = str.replace(`${this.formatSpecifierPrefix}${i}`, val)));
-        return str;
-    }
+  /**
+   * Retrieves a string of specified key from the dictionary.
+   * The part of the string is replaced by specified strings if the `values` argument is specified.
+   * @param key The key in the dictionary.
+   * @param values String values to replace.
+   * @param lang The language code such as "ja".
+   */
+  static format(key: string, values?: string[], lang?: string): string {
+    let str = this.get(key, lang);
+    values?.forEach((val, i) => (str = str.replace(`${this.formatSpecifierPrefix}${i}`, val)));
+    return str;
+  }
 }
 
 /**
  * Retrieves a string of specified key from the dictionary.
  * The part of the string is replaced by specified strings if the `values` argument is specified.
- * @param key
+ * @param key The key in the dictionary.
  * @param values String values to replace.
- * @param lang
+ * @param lang The language code such as "ja".
  */
 export const l10n = (key: string, values?: string[], lang?: string): string => {
-    return L10n.format(key, values, lang);
+  return L10n.format(key, values, lang);
 };

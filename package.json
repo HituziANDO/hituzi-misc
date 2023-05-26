@@ -6,6 +6,7 @@
   "module": "dist-esm/index.js",
   "types": "dist-cjs/index.d.ts",
   "scripts": {
+    "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "build": "npm-run-all -s build:cjs build:esm",
     "build:cjs": "tsc --project . --module commonjs --outDir ./dist-cjs",
     "build:esm": "tsc --project . --module es2015 --outDir ./dist-esm",
