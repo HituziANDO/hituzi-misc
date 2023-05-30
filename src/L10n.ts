@@ -1,7 +1,7 @@
 /**
  * Localization utility.
  *
- * Usage:
+ * @example
  *
  * ```javascript
  *  // Define a dictionary of strings used by the app for localization.
