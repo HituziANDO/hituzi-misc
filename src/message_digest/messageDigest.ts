@@ -25,7 +25,7 @@ export async function messageDigest(
     // encode as (utf-8) Uint8Array
     const msgUint8 = new TextEncoder().encode(message);
     // hash the message
-    const hashBuffer = await crypto.subtle.digest(algorithm, msgUint8);
+    const hashBuffer = await window.crypto.subtle.digest(algorithm, msgUint8);
     // convert buffer to byte array
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     // convert bytes to hex string

@@ -4,6 +4,9 @@
   "description": "JavaScript & TypeScript misc library.",
   "main": "dist-cjs/index.js",
   "module": "dist-cjs/index.js",
+  "browser": {
+    "crypto": false
+  },
   "types": "dist-cjs/index.d.ts",
   "scripts": {
     "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
