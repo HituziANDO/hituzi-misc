@@ -8,8 +8,8 @@
   "scripts": {
     "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
     "build": "npm-run-all -s build:cjs build:esm",
-    "build:cjs": "tsc --project . --module commonjs --outDir ./dist-cjs",
-    "build:esm": "tsc --project . --module es2015 --outDir ./dist-esm",
+    "build:cjs": "rm -rf dist-cjs && tsc --project . --module commonjs --outDir ./dist-cjs",
+    "build:esm": "rm -rf dist-esm && tsc --project . --module es2015 --outDir ./dist-esm",
     "test": "jest",
     "lint:fix": "eslint --fix ./src/**/*.ts ./test/**/*.ts",
     "doc": "typedoc --entryPointStrategy expand ./src && open ./docs/index.html",
