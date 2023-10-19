@@ -68,12 +68,14 @@ export class Logger {
    * @param msg A message to output.
    */
   debug(msg: any) {
-    if (Logger.isObj(msg)) {
+    if (isObj(msg)) {
       msg = this.stringify(msg);
     }
 
+    const console = getConsole();
+
     return LogLevel.Debug >= this.level
-      ? window.console.log.bind(window.console, `%c[DEBUG] ${msg}`, 'color:#54a0ff;')
+      ? console.log.bind(console, `%c[DEBUG] ${msg}`, 'color:#54a0ff;')
       : this.noop;
   }
 
@@ -83,12 +85,14 @@ export class Logger {
    * @param msg A message to output.
    */
   info(msg: any) {
-    if (Logger.isObj(msg)) {
+    if (isObj(msg)) {
       msg = this.stringify(msg);
     }
 
+    const console = getConsole();
+
     return LogLevel.Info >= this.level
-      ? window.console.log.bind(window.console, `%c[INFO] ${msg}`, 'color:#00d2d3;')
+      ? console.log.bind(console, `%c[INFO] ${msg}`, 'color:#00d2d3;')
       : this.noop;
   }
 
@@ -98,12 +102,14 @@ export class Logger {
    * @param msg A message to output.
    */
   warn(msg: any) {
-    if (Logger.isObj(msg)) {
+    if (isObj(msg)) {
       msg = this.stringify(msg);
     }
 
+    const console = getConsole();
+
     return LogLevel.Warn >= this.level
-      ? window.console.log.bind(window.console, `%c[WARN] ${msg}`, 'color:#ff9f43;')
+      ? console.log.bind(console, `%c[WARN] ${msg}`, 'color:#ff9f43;')
       : this.noop;
   }
 
@@ -113,16 +119,14 @@ export class Logger {
    * @param msg A message to output.
    */
   error(msg: any) {
-    if (Logger.isObj(msg)) {
+    if (isObj(msg)) {
       msg = this.stringify(msg);
     }
 
+    const console = getConsole();
+
     return LogLevel.Error >= this.level
-      ? window.console.log.bind(
-          window.console,
-          `%c[ERROR] ${msg}`,
-          'color:#ee5253; font-weight:bold;',
-        )
+      ? console.log.bind(console, `%c[ERROR] ${msg}`, 'color:#ee5253; font-weight:bold;')
       : this.noop;
   }
 
@@ -131,10 +135,16 @@ export class Logger {
   }
 
   private noop() {}
+}
 
-  private static isObj(obj: any) {
-    return (
-      {}.toString.call(obj) === '[object Object]' || {}.toString.call(obj) === '[object Array]'
-    );
-  }
+function isObj(obj: any): boolean {
+  return {}.toString.call(obj) === '[object Object]' || {}.toString.call(obj) === '[object Array]';
+}
+
+function isNodeJs(): boolean {
+  return typeof process !== 'undefined' && process.versions && !!process.versions.node;
+}
+
+function getConsole(): Console {
+  return isNodeJs() ? console : window.console;
 }
