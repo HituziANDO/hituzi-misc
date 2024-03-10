@@ -1,8 +1,8 @@
 {
   "name": "hituzi-misc",
-  "version": "0.15.0",
+  "version": "0.15.3",
   "description": "JavaScript & TypeScript misc library.",
-  "main": "dist/index.umd.js",
+  "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "types": "dist/types/index.d.ts",
   "type": "module",
