@@ -1,6 +1,6 @@
 {
   "name": "hituzi-misc",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "JavaScript & TypeScript misc library.",
   "main": "dist-cjs/index.js",
   "module": "dist-cjs/index.js",
@@ -9,7 +9,7 @@
   },
   "types": "dist-cjs/index.d.ts",
   "scripts": {
-    "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "prepare": "./prepare.sh",
     "build": "npm-run-all -s build:cjs build:esm",
     "build:cjs": "rm -rf dist-cjs && tsc --project . --module commonjs --outDir ./dist-cjs",
     "build:esm": "rm -rf dist-esm && tsc --project . --module es2015 --outDir ./dist-esm",

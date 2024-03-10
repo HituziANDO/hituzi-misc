@@ -8,3 +8,13 @@
 export function numericArray(length: number, offset = 0): number[] {
   return Array.from(new Array(length)).map((_, idx) => idx + offset);
 }
+
+/**
+ * Returns an array of indexes from 0 to length - 1.
+ *
+ * @param length The length of the array.
+ * @returns An array of indexes from 0 to length - 1.
+ */
+export function getIndexes(length: number): number[] {
+  return Array.from({ length }, (_, i) => i);
+}
