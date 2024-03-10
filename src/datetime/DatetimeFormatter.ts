@@ -48,6 +48,7 @@
 export class DatetimeFormatter {
   private _patterns: string[] = [];
 
+  // @ts-ignore
   constructor(private pattern: string) {
     for (let i = 0; i < pattern.length; i++) {
       const ch = pattern.charAt(i);
@@ -122,7 +123,7 @@ export class DatetimeFormatter {
       // Millisecond
       return DatetimeFormatter._zeroPadding(String(date.getMilliseconds()), pattern.length);
     },
-    "'": function (date: Date, pattern: string): string {
+    "'": function (_: Date, pattern: string): string {
       // escape
       if (pattern == "''") {
         return "'";
