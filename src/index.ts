@@ -1,3 +1,9 @@
+export * from './array_util/compact';
+export * from './array_util/getIndexes';
+export * from './array_util/includesAll';
+export * from './array_util/numericArray';
+export * from './array_util/transpose';
+export * from './array_util/uniq';
 export * from './datetime/DatetimeFormatter';
 export * from './identifier/UUID';
 export * from './l10n/L10n';
@@ -13,5 +19,3 @@ export * from './string_util/hasSuffix';
 export * from './type/BaseError';
 export * from './type/Result';
 export * from './type/Dictionary';
-export * from './util/ArrayUtils';
-export * from './util/numericArray';
