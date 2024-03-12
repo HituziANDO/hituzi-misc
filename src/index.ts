@@ -4,6 +4,7 @@ export * from './array_util/includesAll';
 export * from './array_util/numericArray';
 export * from './array_util/transpose';
 export * from './array_util/uniq';
+export * from './browser/BeforeUnloadEventManager';
 export * from './datetime/DatetimeFormatter';
 export * from './env/isNodeJs';
 export * from './identifier/UUID';
