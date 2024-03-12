@@ -36,3 +36,13 @@ export function tryCatch<T, E extends Error>(throwable: () => T): Result<T, E> {
     return { error: e as E };
   }
 }
+
+/**
+ * Converts given Promise<T> object to the Promise<Result<T,E>> object.
+ *
+ * @param promise A promise.
+ * @return A Promise<Result> object.
+ */
+export function tryCatchAsync<T, E extends Error>(promise: Promise<T>): Promise<Result<T, E>> {
+  return promise.then(data => success(data)).catch(error => failure(error));
+}

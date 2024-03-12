@@ -59,6 +59,7 @@ rules:
   '@typescript-eslint/no-this-alias': warn
   '@typescript-eslint/ban-types': warn
   no-empty: off
+  no-control-regex: warn
 settings:
   import/parsers:
     '@typescript-eslint/parser':

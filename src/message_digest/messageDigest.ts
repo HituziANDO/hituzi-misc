@@ -1,3 +1,5 @@
+import { isNodeJs } from '../env/isNodeJs.ts';
+
 /**
  * Converts given message to the message digest using specified algorithm.
  *
@@ -9,7 +11,7 @@ export async function messageDigest(
   message: string,
   algorithm: 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512' = 'SHA-1',
 ): Promise<string> {
-  if (typeof process !== 'undefined' && process.versions && process.versions.node) {
+  if (isNodeJs()) {
     // Node.js
     let algo = 'sha1';
     if (algorithm === 'SHA-256') {
@@ -25,7 +27,7 @@ export async function messageDigest(
     // encode as (utf-8) Uint8Array
     const msgUint8 = new TextEncoder().encode(message);
     // hash the message
-    const hashBuffer = await crypto.subtle.digest(algorithm, msgUint8);
+    const hashBuffer = await window.crypto.subtle.digest(algorithm, msgUint8);
     // convert buffer to byte array
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     // convert bytes to hex string

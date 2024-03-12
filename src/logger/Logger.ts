@@ -1,3 +1,5 @@
+import { isNodeJs } from '../env/isNodeJs.ts';
+
 /**
  * Constants for log level.
  */
@@ -139,10 +141,6 @@ export class Logger {
 
 function isObj(obj: any): boolean {
   return {}.toString.call(obj) === '[object Object]' || {}.toString.call(obj) === '[object Array]';
-}
-
-function isNodeJs(): boolean {
-  return typeof process !== 'undefined' && process.versions && !!process.versions.node;
 }
 
 function getConsole(): Console {

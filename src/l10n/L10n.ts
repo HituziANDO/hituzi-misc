@@ -1,3 +1,5 @@
+import { formatString } from '../string_util/formatString.ts';
+
 /**
  * Localization utility.
  *
@@ -72,9 +74,8 @@ export class L10n {
    * @param lang The language code such as "ja".
    */
   static format(key: string, values?: string[], lang?: string): string {
-    let str = this.get(key, lang);
-    values?.forEach((val, i) => (str = str.replace(`${this.formatSpecifierPrefix}${i}`, val)));
-    return str;
+    const str = this.get(key, lang);
+    return formatString(str, values, this.formatSpecifierPrefix);
   }
 }
 

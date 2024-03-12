@@ -1,5 +1,5 @@
 /**
- * Make given numerical value a character string that delimited by the comma every three digits.
+ * Makes given numerical value a character string that delimited by the comma every three digits.
  *
  * @param val Numerical value.
  * @return comma separated string.

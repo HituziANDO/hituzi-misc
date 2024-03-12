@@ -2,7 +2,6 @@
 .idea
 node_modules
 
-dist-cjs
-dist-esm
+dist
 
 !docs
