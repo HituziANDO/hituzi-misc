@@ -7,6 +7,7 @@ export * from './array_util/uniq';
 export * from './browser/BeforeUnloadEventManager';
 export * from './datetime/DatetimeFormatter';
 export * from './env/isNodeJs';
+export * from './identifier/randomId';
 export * from './identifier/UUID';
 export * from './l10n/L10n';
 export * from './logger/Logger';
