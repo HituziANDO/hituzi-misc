@@ -13,6 +13,7 @@ export * from './l10n/L10n';
 export * from './logger/Logger';
 export * from './logger/PerformanceMeasurement';
 export * from './message_digest/messageDigest';
+export * from './navigation/NavigationController';
 export * from './random/randomWithProbabilityTable';
 export * from './string_util/commaSeparated';
 export * from './string_util/ellipsis';
