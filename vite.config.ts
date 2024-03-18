@@ -4,7 +4,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: 'src/index.ts',
-            name: 'hituzi-misc',
+            name: 'HituziMisc',
             fileName: (format) => `index.${format}.js`
         },
         rollupOptions: {
