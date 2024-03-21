@@ -13,6 +13,7 @@ export * from './identifier/UUID';
 export * from './l10n/L10n';
 export * from './logger/Logger';
 export * from './logger/PerformanceMeasurement';
+export * from './math/round';
 export * from './message_digest/messageDigest';
 export * from './navigation/NavigationController';
 export * from './random/randomWithProbabilityTable';
