@@ -1,6 +1,6 @@
 {
   "name": "hituzi-misc",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "description": "JavaScript & TypeScript misc library.",
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
