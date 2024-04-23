@@ -7,6 +7,8 @@ export * from './array_util/uniq';
 export * from './browser/BeforeUnloadEventManager';
 export * from './browser/xhr/xhrGet';
 export * from './datetime/DatetimeFormatter';
+export * from './datetime/nowInLocal';
+export * from './datetime/toISOStringInUTC';
 export * from './env/isNodeJs';
 export * from './identifier/randomId';
 export * from './identifier/UUID';
