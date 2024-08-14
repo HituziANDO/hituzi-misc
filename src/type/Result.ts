@@ -46,3 +46,28 @@ export function tryCatch<T, E extends Error>(throwable: () => T): Result<T, E> {
 export function tryCatchAsync<T, E extends Error>(promise: Promise<T>): Promise<Result<T, E>> {
   return promise.then(data => success(data)).catch(error => failure(error));
 }
+
+/**
+ * Returns the data if the result is success. Otherwise, throws the error.
+ *
+ * @param result A Result object.
+ * @return A data.
+ * @throws An error.
+ */
+export function getOrThrow<T, E extends Error>(result: Result<T, E>): T {
+  if (result.error) {
+    throw result.error;
+  }
+  return result.data as T;
+}
+
+/**
+ * Returns the data if the result is success. Otherwise, returns the default value.
+ *
+ * @param result A Result object.
+ * @param defaultValue A default value.
+ * @return A data.
+ */
+export function getOrElse<T, E extends Error>(result: Result<T, E>, defaultValue: T): T {
+  return result.data ?? defaultValue;
+}
