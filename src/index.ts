@@ -30,3 +30,5 @@ export * from './string_util/isTextEmpty';
 export * from './type/BaseError';
 export * from './type/Result';
 export * from './type/Dictionary';
+export * from './value/isEmpty';
+export * from './value/isPresent';
