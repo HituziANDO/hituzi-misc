@@ -1,6 +1,6 @@
 # hituzi-misc
 
-JavaScript & TypeScript misc library.
+TypeScript utility library.
 
 ## Install
 
