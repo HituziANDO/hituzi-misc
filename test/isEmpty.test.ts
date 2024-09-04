@@ -11,7 +11,7 @@ describe('isEmpty', () => {
     expect(isEmpty(undefined)).toBe(true);
   });
 
-  it('returns true when the value is false', () => {
+  it('returns true when the value is a boolean false', () => {
     expect(isEmpty(false)).toBe(true);
   });
 
@@ -23,6 +23,14 @@ describe('isEmpty', () => {
     expect(isEmpty('')).toBe(true);
   });
 
+  it('returns true when the value is an empty object', () => {
+    expect(isEmpty({})).toBe(true);
+  });
+
+  it('returns true when the value is an empty array', () => {
+    expect(isEmpty([])).toBe(true);
+  });
+
   it('returns false when the value is a non-empty string', () => {
     expect(isEmpty('Hello')).toBe(false);
   });
@@ -31,12 +39,12 @@ describe('isEmpty', () => {
     expect(isEmpty(42)).toBe(false);
   });
 
-  it('returns false when the value is an object', () => {
-    expect(isEmpty({})).toBe(false);
+  it('returns false when the value is a non-empty object', () => {
+    expect(isEmpty({ name: 'Alice' })).toBe(false);
   });
 
-  it('returns false when the value is an array', () => {
-    expect(isEmpty([])).toBe(false);
+  it('returns false when the value is a non-empty array', () => {
+    expect(isEmpty([0])).toBe(false);
   });
 
   it('returns false when the value is a boolean true', () => {
