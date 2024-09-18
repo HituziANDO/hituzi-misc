@@ -1,4 +1,5 @@
-import { isNodeJs } from '../env/isNodeJs.ts';
+import { isNodeJs } from '../env/isNodeJs';
+import { isObj, isArr } from '../type/type_check';
 
 /**
  * Constants for log level.
@@ -70,7 +71,7 @@ export class Logger {
    * @param msg A message to output.
    */
   debug(msg: any) {
-    if (isObj(msg)) {
+    if (isObj(msg) || isArr(msg)) {
       msg = this.stringify(msg);
     }
 
@@ -87,7 +88,7 @@ export class Logger {
    * @param msg A message to output.
    */
   info(msg: any) {
-    if (isObj(msg)) {
+    if (isObj(msg) || isArr(msg)) {
       msg = this.stringify(msg);
     }
 
@@ -104,7 +105,7 @@ export class Logger {
    * @param msg A message to output.
    */
   warn(msg: any) {
-    if (isObj(msg)) {
+    if (isObj(msg) || isArr(msg)) {
       msg = this.stringify(msg);
     }
 
@@ -121,7 +122,7 @@ export class Logger {
    * @param msg A message to output.
    */
   error(msg: any) {
-    if (isObj(msg)) {
+    if (isObj(msg) || isArr(msg)) {
       msg = this.stringify(msg);
     }
 
@@ -137,10 +138,6 @@ export class Logger {
   }
 
   private noop() {}
-}
-
-function isObj(obj: any): boolean {
-  return {}.toString.call(obj) === '[object Object]' || {}.toString.call(obj) === '[object Array]';
 }
 
 function getConsole(): Console {
