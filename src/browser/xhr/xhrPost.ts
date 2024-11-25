@@ -3,7 +3,24 @@ import { BaseError } from '../../type/BaseError';
 /**
  * The type of options for `xhrPost` function.
  */
-export type XHRPostOptions = { responseType: 'text' | 'json' };
+export type XHRPostOptions = {
+  /**
+   * The URL to send the request.
+   */
+  url: string;
+  /**
+   * The data to be sent.
+   */
+  data?: any;
+  /**
+   * The response type.
+   */
+  responseType?: 'text' | 'json';
+  /**
+   * The headers.
+   */
+  headers?: { [key: string]: string };
+};
 
 /**
  * The error that occurs when the status code is not 200.
@@ -15,23 +32,27 @@ export class XHRPostError extends BaseError {
 }
 
 /**
- * Makes a POST request to the given URL with JSON data and returns a promise that resolves with the response.
+ * Makes a POST request to the given URL with data and returns a promise that resolves with the response.
  * If the status code is not 200, returns a promise that rejects with `XHRPostError`.
  *
- * @param url A URL.
- * @param data Data to be sent in JSON format.
  * @param options Options for the request.
  */
-export function xhrPost(
-  url: string,
-  data: any,
-  options: XHRPostOptions = { responseType: 'json' },
-): Promise<string> {
+export function xhrPost(options: XHRPostOptions): Promise<any> {
   return new Promise((resolve, reject) => {
+    if (!options.url) {
+      reject(new XHRPostError(-1, 'url is required.'));
+      return;
+    }
+
     const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', url);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.open('POST', options.url);
+
+    const headers = Object.assign({ 'Content-Type': 'application/json' }, options.headers || {});
+
+    for (const key in headers) {
+      xhr.setRequestHeader(key, headers[key]);
+    }
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
@@ -48,8 +69,12 @@ export function xhrPost(
       }
     };
 
-    xhr.responseType = options.responseType;
+    xhr.responseType = options.responseType || 'json';
 
-    xhr.send(JSON.stringify(data));
+    if (options.data) {
+      xhr.send(JSON.stringify(options.data));
+    } else {
+      xhr.send();
+    }
   });
 }
