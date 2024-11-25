@@ -3,7 +3,10 @@ import { BaseError } from '../../type/BaseError';
 /**
  * The type of options for `xhrPost` function.
  */
-export type XHRPostOptions = { responseType: 'text' | 'json' };
+export type XHRPostOptions = {
+  responseType: 'text' | 'json';
+  headers?: { [key: string]: string };
+};
 
 /**
  * The error that occurs when the status code is not 200.
@@ -32,6 +35,11 @@ export function xhrPost(
 
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/json');
+    if (options.headers) {
+      for (const key in options.headers) {
+        xhr.setRequestHeader(key, options.headers[key]);
+      }
+    }
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
