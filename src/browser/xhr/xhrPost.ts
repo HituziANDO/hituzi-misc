@@ -1,34 +1,37 @@
 import { BaseError } from '../../type/BaseError';
 
 /**
- * The type of options for `xhrGet` function.
+ * The type of options for `xhrPost` function.
  */
-export type XHRGetOptions = { responseType: 'text' | 'json' };
+export type XHRPostOptions = { responseType: 'text' | 'json' };
 
 /**
  * The error that occurs when the status code is not 200.
  */
-export class XHRGetError extends BaseError {
+export class XHRPostError extends BaseError {
   constructor(readonly statusCode: number, message: string) {
     super(message);
   }
 }
 
 /**
- * Makes a GET request to the given URL and returns a promise that resolves with the response.
- * If the status code is not 200, returns a promise the rejects with `XHRGetError`.
+ * Makes a POST request to the given URL with JSON data and returns a promise that resolves with the response.
+ * If the status code is not 200, returns a promise that rejects with `XHRPostError`.
  *
  * @param url A URL.
+ * @param data Data to be sent in JSON format.
  * @param options Options for the request.
  */
-export function xhrGet(
+export function xhrPost(
   url: string,
-  options: XHRGetOptions = { responseType: 'json' },
+  data: any,
+  options: XHRPostOptions = { responseType: 'json' },
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', url);
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
@@ -39,7 +42,7 @@ export function xhrGet(
             resolve(xhr.responseText);
           }
         } else {
-          const error = new XHRGetError(xhr.status, xhr.statusText);
+          const error = new XHRPostError(xhr.status, xhr.statusText);
           reject(error);
         }
       }
@@ -47,6 +50,6 @@ export function xhrGet(
 
     xhr.responseType = options.responseType;
 
-    xhr.send();
+    xhr.send(JSON.stringify(data));
   });
 }
