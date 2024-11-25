@@ -6,6 +6,7 @@ export * from './array_util/transpose';
 export * from './array_util/uniq';
 export * from './browser/BeforeUnloadEventManager';
 export * from './browser/xhr/xhrGet';
+export * from './browser/xhr/xhrPost';
 export * from './datetime/DatetimeFormatter';
 export * from './datetime/nowInLocal';
 export * from './datetime/secondsToHMS';
