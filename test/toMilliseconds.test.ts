@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { TimeUnit } from '../src';
-import toMilliseconds from '../src/time/toMilliseconds';
+import { TimeUnit, toMilliseconds } from '../src';
 
 describe('toMilliseconds', () => {
   it('returns the same value when the unit is milliseconds', () => {

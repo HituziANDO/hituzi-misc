@@ -7,10 +7,7 @@ import { TimeUnit } from './TimeUnit';
  * @param unit Time unit.
  * @returns Time in milliseconds.
  */
-export default function toMilliseconds(
-  time: number,
-  unit: TimeUnit = TimeUnit.Milliseconds,
-): number {
+export function toMilliseconds(time: number, unit: TimeUnit = TimeUnit.Milliseconds): number {
   let timeMs = 0;
   switch (unit) {
     case TimeUnit.Milliseconds:

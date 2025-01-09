@@ -1,5 +1,5 @@
 import { TimeUnit } from './TimeUnit';
-import toMilliseconds from './toMilliseconds';
+import { toMilliseconds } from './toMilliseconds';
 
 /**
  * Sleep for a specified time.
@@ -8,6 +8,6 @@ import toMilliseconds from './toMilliseconds';
  * @param unit Time unit.
  * @returns Promise that resolves after the specified time.
  */
-export default function sleep(time: number, unit: TimeUnit = TimeUnit.Milliseconds): Promise<void> {
+export function sleep(time: number, unit: TimeUnit = TimeUnit.Milliseconds): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, toMilliseconds(time, unit)));
 }
